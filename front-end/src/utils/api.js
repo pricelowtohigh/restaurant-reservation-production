@@ -6,7 +6,7 @@ import axios from "axios";
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
+  process.env.REACT_APP_API_BASE_URL || "https://restaurant-reservation-production-backend.onrender.com";
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -30,6 +30,7 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
+  console.log("fetching Json @: " + url)
   try {
     const response = await fetch(url, options);
 
