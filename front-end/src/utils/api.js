@@ -57,6 +57,7 @@ async function fetchJson(url, options, onCancel) {
 
 export async function listReservations(params, signal) {
   const url = new URL(`${API_BASE_URL}/reservations`);
+  console.log("list reservations @: " + url);
   Object.entries(params).forEach(([key, value]) =>
     url.searchParams.append(key, value.toString())
   );
@@ -67,11 +68,13 @@ export async function listReservations(params, signal) {
 
 export async function listTables(signal) {
   const url = new URL(`${API_BASE_URL}/tables`);
+  console.log("list tables @: " + url);
   return await fetchJson(url, { headers, signal }, []);
 }
 
 export async function unSeatTable(table_id) {
   const url = new URL(`${API_BASE_URL}/tables/${table_id}/seat`);
+  console.log("unseat table @: " + url);
   try {
     return await axios.delete(url);
   } catch (error) {
