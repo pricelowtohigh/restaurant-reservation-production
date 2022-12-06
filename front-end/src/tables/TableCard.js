@@ -10,7 +10,7 @@ export default function TableCard({ table }) {
 
     if (window.confirm(message)) {
       unSeatTable(table.table_id);
-      history.go(0);
+      history.push("/");
     }
   };
 

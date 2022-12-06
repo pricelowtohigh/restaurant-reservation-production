@@ -45,13 +45,11 @@ export default function ReservationCard({ reservation }) {
       </td>
       <td>
         {reservation.status === "booked" && (
-          
-            <button type="button" onClick={handleSeatClick} className="btn btn-secondary">Seat</button>
+            <button type="button" class="btn btn-success" onClick={handleSeatClick} className="btn btn-secondary">Seat</button>
         )}
       </td>
       <td>
         {reservation.status === "booked" && (
-          
             <button type="button" onClick={handleEditClick} className="btn btn-secondary">Edit</button>
         )}
       </td>
