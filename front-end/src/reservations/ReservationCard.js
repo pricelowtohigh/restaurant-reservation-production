@@ -16,16 +16,21 @@ export default function ReservationCard({ reservation }) {
           `${URL}/reservations/${reservation.reservation_id}/status`,
           { data: { status: "cancelled" } }
         );
-        history.go(0);
+        history.push("/");
       } catch (error) {
         return error;
       }
     }
   };
 
-  function handleClick () {
+  function handleEditClick () {
     console.log(`/reservations/${reservation.reservation_id}/edit`)
     history.push(`/reservations/${reservation.reservation_id}/edit`)
+  }
+
+  function handleSeatClick () {
+    console.log(`/reservations/${reservation.reservation_id}/seat`)
+    history.push(`/reservations/${reservation.reservation_id}/seat`)
   }
 
   return (
@@ -40,15 +45,14 @@ export default function ReservationCard({ reservation }) {
       </td>
       <td>
         {reservation.status === "booked" && (
-          <a href={`/reservations/${reservation.reservation_id}/seat`}>
-            <button className="btn btn-success">Seat</button>
-          </a>
+          
+            <button type="button" onClick={handleSeatClick} className="btn btn-secondary">Seat</button>
         )}
       </td>
       <td>
         {reservation.status === "booked" && (
           
-            <button type="button" onClick={handleClick} className="btn btn-secondary">Edit</button>
+            <button type="button" onClick={handleEditClick} className="btn btn-secondary">Edit</button>
         )}
       </td>
       <td>
