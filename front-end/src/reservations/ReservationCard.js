@@ -23,6 +23,11 @@ export default function ReservationCard({ reservation }) {
     }
   };
 
+  function handleClick () {
+    console.log(`/reservations/${reservation.reservation_id}/edit`)
+    history.push(`/reservations/${reservation.reservation_id}/edit`)
+  }
+
   return (
     <tr>
       <td>{reservation.first_name}</td>
@@ -42,9 +47,8 @@ export default function ReservationCard({ reservation }) {
       </td>
       <td>
         {reservation.status === "booked" && (
-          <a href={`/reservations/${reservation.reservation_id}/edit`}>
-            <button className="btn btn-secondary">Edit</button>
-          </a>
+          
+            <button type="button" onClick={handleClick} className="btn btn-secondary">Edit</button>
         )}
       </td>
       <td>
